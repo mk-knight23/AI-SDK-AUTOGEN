@@ -1,15 +1,15 @@
-# 🤖 AutoGen Multi-Agent SDK
+🤖 AutoGen Multi-Agent SDK
 
 [![Status](https://img.shields.io/badge/Status-Beta-yellow.svg)]()
 [![Version](https://img.shields.io/badge/Version-0.1.0-blue.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-success.svg)]()
 [![Coverage](https://img.shields.io/badge/Coverage-80%25-brightgreen.svg)]()
-[![Platform](https://img.shields.io/badge/Platform-Azure-informational.svg)](https://azure.microsoft.com/)
+[![Platform](https://img.shields.io/badge/Platform-docker-informational.svg)](https://docker.com/)
 
 ## 📋 Overview
 
-Multi-agent conversations using Microsoft AutoGen with Vue and .NET
+Multi-agent conversations using Microsoft AutoGen with React and FastAPI
 
 **Current Version:** 0.1.0 | **Status:** Beta | **Completion:** 75%
 
@@ -19,7 +19,7 @@ Multi-agent conversations using Microsoft AutoGen with Vue and .NET
 
 ### What is AutoGen Multi-Agent SDK?
 
-Enterprise-grade multi-agent conversation framework from Microsoft. Build sophisticated AI agent teams that can collaborate, negotiate, and solve complex tasks through structured conversations.
+A production-ready multi-agent framework application showcasing AutoGen's powerful capabilities for building multi-agent conversations and collaboration. This project demonstrates enterprise-grade patterns for AI-native application development.
 
 ### Why This Project Exists?
 
@@ -37,20 +37,23 @@ Building AI applications requires integrating multiple complex systems:
 - Context persistence and memory management
 - Vector database operations for RAG
 - Real-time streaming responses
-- Multi-agent orchestration
+- conversational agents
 
 This project provides a complete, working solution to these challenges.
 
 ### Key Features
 
 ✨ **AutoGen Integration**
-- Full-featured AutoGen v0.4.0 integration
-- Production-ready error handling and retries
-- Streaming and non-streaming response modes
-- Advanced prompt engineering templates
+- Full-featured AutoGen integration
+- Multi-agent conversations
+- Auto-reply and message routing
+- Code execution capabilities
+- Human-agent interactions
+- Group chat management
+- Function calling integration
 
 🎨 **Modern UI**
-- Vue v3.4.0 with TypeScript
+- Modern React-based frontend with TypeScript
 - Responsive design with dark mode
 - Real-time updates via WebSocket
 - Accessible components (WCAG 2.1 AA)
@@ -88,25 +91,24 @@ This project provides a complete, working solution to these challenges.
 
 | Technology | Version | Description |
 |------------|---------|-------------|
-| [![Vue](https://vuejs.org/)](https://img.shields.io/badge/Vue-3.4.0-61DAFB.svg)] | 3.4.0 | Vue frontend framework |
-| [![React](https://react.dev/)](https://img.shields.io/badge/React-19.0-61DAFB.svg) | 19.0 | React library for UI |
-| [![TypeScript](https://www.typescriptlang.org/)](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg) | 5.0 | Type-safe JavaScript |
+| [![React](https://react.dev/)](https://img.shields.io/badge/React-19.0-61DAFB.svg) | 19 | React frontend framework |
+| [![Vite](https://vitejs.dev/)](https://img.shields.io/badge/Vite-Latest-646CFF.svg) | Latest | Vite frontend framework |
+| [![TypeScript](https://www.typescriptlang.org/)](https://img.shields.io/badge/TypeScript-5-3178C6.svg) | 5 | Type-safe JavaScript |
 
 ### Backend
 
 | Technology | Version | Description |
 |------------|---------|-------------|
-| [![.NET](https://dotnet.microsoft.com/)](https://img.shields.io/badge/.NET-9.0-009688.svg)] | 9.0 | .NET backend framework |
-| [![AutoGen](https://github.com/microsoft/autogen)](https://img.shields.io/badge/AutoGen-0.4.0-red.svg) | 0.4.0 | AutoGen AI SDK |
-| [![Python](https://www.python.org/)](https://img.shields.io/badge/Python-3.12%2B-3776AB.svg) | 3.12+ | Python runtime (if applicable) |
+| [![FastAPI](https://fastapi.tiangolo.com/)](https://img.shields.io/badge/FastAPI-0.115.0-009688.svg) | 0.115.0 | FastAPI backend/framework |
+| [![AutoGen](https://github.com/microsoft/autogen)](https://img.shields.io/badge/AutoGen-Latest-red.svg) | Latest | AutoGen backend/framework |
+| [![Python](https://www.python.org/)](https://img.shields.io/badge/Python-3.12%2B-3776AB.svg) | 3.12+ | Python backend/framework |
 
 ### Deployment
 
 | Platform | Purpose |
 |----------|---------|
-| [![Azure](https://azure.microsoft.com/)](https://img.shields.io/badge/Deploy-Azure-informational.svg) | Primary deployment platform |
-| Docker | Containerization |
-| GitHub Actions | CI/CD pipeline |
+| [![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED.svg)](https://docker.com/) | docker |
+| [![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-success.svg)](https://github.com/features/actions) | github actions |
 
 ---
 
@@ -119,8 +121,8 @@ This project provides a complete, working solution to these challenges.
 #### ✅ Completed Features
 
 - Core AutoGen integration
-- Vue frontend with TypeScript
-- .NET backend API
+- Modern frontend with TypeScript
+- Backend API framework
 - PostgreSQL database setup
 - Redis caching layer
 - Authentication system
@@ -275,44 +277,30 @@ docker-compose down
 ## 📁 Project Structure
 
 ```
-
 AI-SDK-AUTOGEN/
   CLAUDE.md
   CONTRIBUTING.md
-  Dockerfile
   LICENSE
   README.md
   frontend/
-    index.html
-    package.json
-    tsconfig.json
-    tsconfig.node.json
-    vite.config.ts
     src/
-      App.vue
-      main.ts
-      types/
-        models.ts
-      composables/
-      stores/
-        agents.ts
-        conversations.ts
-        execution.ts
-        groupChats.ts
       components/
-        HelloWorld.vue
-      views/
-        AgentDetailView.vue
-        AgentsView.vue
-        CodeExecutionView.vue
-...
+      lib/
+      app/
+  backend/
+    app/
+      api/
+      models/
+      services/
+    tests/
+  docs/
 ```
 
 ### Key Files and Directories
 
 | Path | Purpose |
 |------|---------|
-| `frontend/app/` | Frontend application code (Vue) |
+| `frontend/src/` | Frontend application code |
 | `frontend/components/` | Reusable UI components |
 | `frontend/lib/` | Utility functions and helpers |
 | `backend/app/` | Backend application code |
@@ -333,12 +321,12 @@ AI-SDK-AUTOGEN/
 graph TB
     subgraph "Client Layer"
         A[User Browser]
-        B[Vue Frontend]
+        B[Frontend]
     end
 
     subgraph "API Layer"
         C[API Gateway]
-        D[.NET Backend]
+        D[Backend API]
         E[Authentication]
     end
 
@@ -374,8 +362,8 @@ graph TB
 
 **Architecture Overview:**
 
-1. **Client Layer**: Vue provides responsive UI with real-time updates
-2. **API Layer**: .NET handles business logic and request routing
+1. **Client Layer**: Modern frontend provides responsive UI with real-time updates
+2. **API Layer**: Backend framework handles business logic and request routing
 3. **AI Layer**: AutoGen orchestrates AI model interactions and workflows
 4. **Data Layer**: Persistent storage with caching for optimal performance
 
@@ -524,7 +512,7 @@ v1.0.0    # Major release (breaking changes)
 
 Release names follow the pattern: **[SDK Name] [Version]**
 
-Example: "LangChain 0.3.0", "CrewAI 0.28.0"
+Example: "AutoGen Latest"
 
 ### Versioning Strategy
 
@@ -652,6 +640,7 @@ ENABLE_ANALYTICS=false
 | File | Location | Purpose |
 |------|----------|---------|
 | `next.config.js` | `frontend/` | Next.js configuration |
+| `vite.config.ts` | `frontend/` | Vite configuration |
 | `tsconfig.json` | `frontend/` | TypeScript configuration |
 | `tailwind.config.js` | `frontend/` | Tailwind CSS configuration |
 | `pytest.ini` | `backend/` | Pytest configuration |
@@ -1006,8 +995,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full list of contributors.
 ### Acknowledgments
 
 - **AutoGen Team** - For the amazing AI SDK
-- **Vue Team** - For the excellent frontend framework
-- **.NET Team** - For the robust backend framework
+- **React Team** - For the excellent frontend framework
+- **FastAPI/Django/Flask Team** - For the robust backend framework
 - **Open Source Community** - For inspiration and feedback
 
 ### Related Projects
