@@ -13,8 +13,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
-import autogen
-from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
+import pyautogen
+from pyautogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 
 # Load environment variables
 load_dotenv()
@@ -277,7 +277,7 @@ async def health_check():
         status="healthy",
         service="SupplyConsensus AutoGen Service",
         version="1.0.0",
-        autogen_version=autogen.__version__,
+        autogen_version="0.2.0",  # pyautogen version
         timestamp=datetime.utcnow().isoformat(),
     )
 

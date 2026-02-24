@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
   <div class="app">
     <header class="header">
       <nav class="nav">
-        <h1 class="logo">SupplyConsensus</h1>
+        <h1 class="logo">AI-SDK-AUTOGEN</h1>
         <div class="nav-links">
           <router-link to="/" class="nav-link">Home</router-link>
+          <router-link to="/agents" class="nav-link">Agents</router-link>
+          <router-link to="/conversations" class="nav-link">Conversations</router-link>
+          <router-link to="/code" class="nav-link">Code</router-link>
+          <router-link to="/groups" class="nav-link">Groups</router-link>
+          <router-link to="/teams" class="nav-link">Teams</router-link>
         </div>
       </nav>
     </header>
@@ -16,7 +21,7 @@ import { RouterView } from 'vue-router'
       <RouterView />
     </main>
     <footer class="footer">
-      <p>&copy; 2025 SupplyConsensus. Built with Vue 3 + .NET 9.</p>
+      <p>AI-SDK-AUTOGEN - Multi-Agent System with Microsoft AutoGen. Built with Vue 3 + .NET 9.</p>
     </footer>
   </div>
 </template>
@@ -44,10 +49,13 @@ body {
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -55,14 +63,14 @@ body {
 }
 
 .logo {
-  color: #42b883;
+  color: #667eea;
   font-size: 1.5rem;
   font-weight: 600;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-link {
@@ -70,19 +78,27 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
+  position: relative;
 }
 
 .nav-link:hover,
 .nav-link.router-link-active {
-  color: #42b883;
+  color: #667eea;
+}
+
+.nav-link.router-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #667eea;
 }
 
 .main {
   flex: 1;
-  max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
 }
 
 .footer {
@@ -91,5 +107,6 @@ body {
   padding: 1.5rem 2rem;
   text-align: center;
   color: #666;
+  font-size: 0.9rem;
 }
 </style>
