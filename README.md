@@ -70,6 +70,129 @@ az container app up
 
 ---
 
+## 🏗️ Architecture
+
+### System Design
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              Frontend (Vue 3)                               │
+│  ┌─────────────┐  ┌──────────────┐  ┌─────────────┐  ┌─────────────────┐   │
+│  │ Agent Chat  │  │ Code Exec    │  │ Group Chat  │  │ Agent Dashboard │   │
+│  └──────┬──────┘  └──────┬───────┘  └──────┬──────┘  └────────┬────────┘   │
+│         └────────────────┴──────────────────┴──────────────────┘            │
+│                                    │ SignalR/WebSocket                       │
+└────────────────────────────────────┼─────────────────────────────────────────┘
+                                     │
+┌────────────────────────────────────┼─────────────────────────────────────────┐
+│                              Backend (.NET 9)                                │
+│  Controllers → Services → Repositories → PostgreSQL + Redis                  │
+│  SignalR Hub → gRPC → AutoGen Agents (Python/.NET)                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Core Features
+
+#### Multi-Agent Conversations
+- Real-time agent-to-agent messaging via SignalR
+- Conversation threading and history
+- Agent role management (system, user, assistant)
+- Message routing and broadcasting
+
+#### Code Execution
+- Docker-based sandboxed execution
+- Support for Python, JavaScript, C#
+- Execution output capture (stdout, stderr)
+- Resource limits and timeout management
+
+#### Group Chat Patterns
+- Sequential round-robin chat
+- Moderator/broadcast patterns
+- Dynamic agent joining/leaving
+- Topic-based conversations
+
+### API Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /api/agents` | List all agents |
+| `POST /api/agents` | Create new agent |
+| `GET /api/conversations` | List conversations |
+| `POST /api/conversations/{id}/messages` | Send message |
+| `POST /api/code/execute` | Execute code |
+| `GET /api/groups` | List group chats |
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+graph TB
+    subgraph "Frontend - Vue 3"
+        UI[Vue Components]
+        State[Pinia Store]
+    end
+
+    subgraph "Backend - .NET 9"
+        API[gRPC API]
+        AutoGen[AutoGen Core]
+        Agents[Agent Services]
+    end
+
+    subgraph "Infrastructure"
+        DB[(Database)]
+        Queue[(Message Queue)]
+    end
+
+    UI -->|gRPC| API
+    API --> AutoGen
+    AutoGen --> Agents
+    API --> DB
+    Agents --> Queue
+```
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/agents | List all agents |
+| POST | /api/agents | Create new agent |
+| GET | /api/conversations | List conversations |
+| POST | /api/conversations/{id}/messages | Send message |
+| POST | /api/code/execute | Execute code |
+| GET | /api/groups | List group chats |
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Connection refused**
+- Ensure .NET backend is running: `cd autogen-service && dotnet run`
+- Check gRPC port is available
+
+**Agent communication failures**
+- Verify all agents are registered
+- Check gRPC server is accessible
+- Review agent configuration
+
+**Code execution errors**
+- Verify code execution sandbox is running
+- Check permissions for code execution
+
+---
+
+## 📚 Additional Documentation
+
+- [API Reference](docs/API.md) - Complete API documentation
+- [Deployment Guide](docs/DEPLOYMENT.md) - Platform-specific deployment
+- [Testing Guide](docs/TESTING.md) - Testing strategies and coverage
+
+---
+
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) for details.
