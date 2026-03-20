@@ -1,0 +1,13 @@
+{
+  "name": "AI-SDK-AUTOGEN",
+  "title": "AutoGen Swarm Grid",
+  "description": "Collaborative multi-agent conversations for coordinated execution",
+  "topics": [
+    "autogen",
+    "multi-agent",
+    "conversation",
+    "coordination",
+    "python"
+  ],
+  "homepage": "https://mk-knight23.github.io/AI-SDK-AUTOGEN"
+}
